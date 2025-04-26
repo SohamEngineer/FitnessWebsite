@@ -1,0 +1,133 @@
+
+.header{
+    width:100%;
+    height: 70px;
+    line-height: 70px;
+}
+.nav__wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo{
+    display: flex;
+    align-items: center;
+    column-gap: 0.5rem;
+}
+.logo__img{
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    border-radius: 5px;
+    line-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo__img img{
+    width: 500%;
+}
+
+.logo h2{
+    color: var(--heading-color);
+    font-weight: 700 !important;
+}
+.menu{
+    display: flex;
+    align-items: center;
+    column-gap: 2.5rem;
+}
+.nav__item {
+    color:var(--heading-color);
+    font-weight: 600 !important;
+    font-size: 1.1rem;
+}
+
+.nav__item:hover{
+    color: var(--primary-color);
+}
+.nav__right{
+    display: flex;
+    align-items: center;
+    column-gap: 1.5rem;
+}
+.register__btn{
+    border: none;
+    outline: none;
+    padding: 10px 20px;
+    color: #fff;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+    font-family: (--font-name);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+/* .mobile__menu{
+    color: var(--heading-color);
+    font-size: 1.3rem;
+    cursor: pointer;
+    display: none;
+} */
+
+.sticky__header{
+    width: 100%;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    background: #fff;
+}
+
+.nav__item {
+    position: relative;
+  }
+  
+  .dropdown {
+    opacity: 0;
+    width: auto;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    position: absolute;
+    background-color: rgb(247, 245, 245);
+    padding: 0.5rem 1rem;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    top: 100%;
+    left: 0;
+    white-space: nowrap;
+  }
+  
+  .nav__item:hover .dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+  
+  .dropdown li {
+    margin-left: 20px;
+  }
+  
+  .dropdown li a {
+    color: #000;
+    text-decoration: none;
+  }
+  
+  .dropdown li a:hover {
+    color: #007bff;
+  }
+  /* Hide mobile menu by default */
+.navigation {
+    display: flex;
+  }
+  
+  .mobile__menu {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+  }
+  
+  
