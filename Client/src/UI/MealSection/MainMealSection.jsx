@@ -15,7 +15,7 @@ function MainMealSection() {
     <div className="main-meal-container">
       <h2>Eat Good. Feel Good.</h2>
 
-      <div className="button-group">
+      <div className="button-groups">
         <button  className="active" onClick={() => toggleFeature('mealPlanning')}>
           {activeFeature === 'mealPlanning' ? "Hide Meal Planning" : "Show Meal Planning"}
         </button>

@@ -99,15 +99,26 @@
 }
 
 /* Button Group */
-.button-group {
+.useButton {
   display: flex;
   justify-content: space-between;
   width: 100%;
   max-width: 350px;
   margin: 20px 0;
-}
 
-.button-group .next-btn .pause-btn {
+}
+.useButton button{
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #6f55f2;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.useButton .next-btn .pause-btn {
   background-color: #1e88e5;
   color: white;
   border: none;
@@ -118,7 +129,7 @@
   transition: background-color 0.3s ease;
 }
 
-.button-group button:hover {
+.useButton button:hover {
   background-color: #1565c0;
 }
 
@@ -149,12 +160,12 @@
     font-size: 30px;
   }
 
-  .button-group {
+  .useButton {
     flex-direction: column;
     max-width: 90%;
   }
 
-  .button-group button {
+  .useButton button {
     width: 100%;
     margin-bottom: 10px;
   }
@@ -181,12 +192,12 @@
     font-size: 18px;
   }
 
-  .button-group {
+  .useButton {
     flex-direction: column;
     max-width: 90%;
   }
 
-  .button-group button {
+  .useButton button {
     width: 100%;
     margin-bottom: 10px;
   }

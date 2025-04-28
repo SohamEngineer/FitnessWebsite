@@ -92,7 +92,7 @@
     transform: translateY(10px);
     transition: opacity 0.4s ease, transform 0.4s ease;
     position: absolute;
-    background-color: rgb(247, 245, 245);
+    background-color:transparent;
     padding: 0.5rem 1rem;
     box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
     z-index: 1000;
