@@ -13,14 +13,14 @@
     color: #333;
   }
   
-  .button-group {
+  .button-groups {
     display: flex;
     justify-content: center;
     gap: 1rem;
     margin-bottom: 2rem;
   }
   
-  .button-group button {
+  .button-groups button {
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
     font-weight: 600;
@@ -32,7 +32,7 @@
     transition: background 0.3s ease;
   }
   
-  .button-group button:hover {
+  .button-groups button:hover {
     background-color: #6f55f2;
   }
   

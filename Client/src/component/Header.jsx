@@ -122,12 +122,6 @@ const Header = () => {
                     <NavLink to="/userprofile">Profile</NavLink>
                   </MenuItem>
 
-                  {/* Optional Admin Panel */}
-                  {/* {user.role === "admin" && (
-                    <MenuItem onClick={handleClose}>
-                      <NavLink to="/admin">Admin Panel</NavLink>
-                    </MenuItem>
-                  )} */}
 
                   <MenuItem
                     onClick={() => {

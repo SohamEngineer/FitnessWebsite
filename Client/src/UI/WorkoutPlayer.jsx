@@ -85,7 +85,7 @@ const WorkoutPlayer = () => {
         <h2>{currentWorkout?.title}</h2>
       )}
 
-      <div className="button-group">
+      <div className="useButton">
         {phase !== "rest" ? (
           <>
             <button className="pause-btn" onClick={() => setPaused(!paused)}>
