@@ -34,8 +34,11 @@ const nav__links = [
   },
 ];
 
+
+
 const Header = () => {
   const { authUser, logout } = useAuth();
+  const [activeItem, setActiveItem] = useState(null);
 
   // Fallback: get from localStorage if authUser not available
   const storedUser = JSON.parse(localStorage.getItem("user"));
@@ -49,6 +52,9 @@ const Header = () => {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+  const handleItemClick = (path) => {
+    setActiveItem(path);
   };
 
   const headerRef = useRef(null);
@@ -92,12 +98,22 @@ const Header = () => {
                   {/* Dropdown if children exist */}
                   {item.children && (
                     <ul className="dropdown">
-                      {item.children.map((child) => (
-                        <li key={child.path}>
-                          <NavLink to={child.path}>{child.display}</NavLink>
-                        </li>
-                      ))}
-                    </ul>
+      {item.children &&
+        item.children.map((child) => (
+          <li
+            key={child.path}
+            className={activeItem === child.path ? 'active' : ''}
+            onClick={() => handleItemClick(child.path)}
+          >
+            <NavLink
+              to={child.path}
+              activeClassName="active" // React Router active class
+            >
+              {child.display}
+            </NavLink>
+          </li>
+        ))}
+    </ul>
                   )}
                 </li>
               ))}
