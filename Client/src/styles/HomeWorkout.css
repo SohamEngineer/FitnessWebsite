@@ -47,10 +47,14 @@
 /* Main Content Area */
 .content-area {
   flex: 1;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  
   padding: 20px;
   background-color: #fcfafa;
 }
-
+.content-area::-webkit-scrollbar{
+display: none;}
 .content-area h2 {
   text-align: center;
   margin-bottom: 20px;

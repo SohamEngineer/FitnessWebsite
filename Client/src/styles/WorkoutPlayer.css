@@ -118,7 +118,7 @@
   cursor: pointer;
   transition: background 0.3s ease;
 }
-.useButton .next-btn .pause-btn {
+/* .useButton .next-btn .pause-btn {
   background-color: #1e88e5;
   color: white;
   border: none;
@@ -127,24 +127,20 @@
   font-size: 16px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-}
+} */
 
 .useButton button:hover {
-  background-color: #1565c0;
+  background-color: #7061b8;
 }
+/*  */
 
-.pause-btn, .next-btn {
+.pause-btn, .next-btn , .skip-btn {
   width: 48%;
 }
 
-.skip-btn {
-  background-color: #ba3007;
-  /* width: 100%; */
-}
-
-.skip-btn:hover {
-  background-color: #e64a19;
-}
+   .skip-btn{ height: 45px;
+    margin-top: 20px;
+   }
 
 /* Media Queries for Responsive Design */
 @media screen and (max-width: 768px) {
