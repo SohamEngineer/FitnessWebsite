@@ -20,6 +20,7 @@ import HomeWorkout from '../UI/WorkoutHome';
 import WorkoutDetails from '../UI/WorkOutDetails';
 import GymWorkoutDetails from '../UI/GymWorkDetails';
 import WorkoutPlayer from '../UI/WorkoutPlayer';
+import ProfilePage from '../UI/profile/profile';
 
 const AllRoutes = () => {
   
@@ -41,7 +42,7 @@ const AllRoutes = () => {
        <Route path='/calorie' element={<Caloricalculator/>}></Route>
        <Route path='/mealsection'  element={<MainMealSection/>}></Route>
        <Route path='/signup' element={<Signup/>}/>
-       <Route path='/userprofile' element={<fr/>}></Route>
+       <Route path='/userprofile' element={<ProfilePage/>}></Route>
        <Route path='/forgotpassword' element={<ForgotPassword/>}></Route>
        <Route path='/verify-otp' element={<VerifyOTP/>}></Route>
 

@@ -101,7 +101,7 @@ const Header = () => {
         <div className="nav__wrapper">
           <div className="logo">
             <div className="logo__img">
-              <img src={logo} alt="Health & Fitness Logo" />
+              <img src={logo} alt="Health & Fitness Logo" className=""/>
             </div>
             <h2>Health & Fitness</h2>
           </div>
@@ -140,13 +140,7 @@ const Header = () => {
                 </li>
               ))}
               {/* Add Log In button to mobile menu */}
-              {!user && (
-                <li className="nav__item">
-                  <NavLink to="/login" onClick={() => setIsMobileMenuOpen(false)}>
-                    <button className="register__btn">Log In</button>
-                  </NavLink>
-                </li>
-              )}
+              
             </ul>
           </div>
 
