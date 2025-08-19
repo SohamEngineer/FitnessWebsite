@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import "../styles/WorkoutPlayer.css";
 import { FaPause, FaPlay } from "react-icons/fa6";
@@ -7,17 +7,29 @@ const WorkoutPlayer = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
   const workouts = state?.workouts || [];
+
   const [paused, setPaused] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [timeLeft, setTimeLeft] = useState(30);
   const [phase, setPhase] = useState("workout"); // "workout" or "rest"
+
+  // ✅ useCallback makes this stable
+  const handleNext = useCallback(() => {
+    if (currentIndex + 1 < workouts.length) {
+      setCurrentIndex((prev) => prev + 1);
+      setPhase("workout");
+      setTimeLeft(30); // Workout time duration
+    } else {
+      alert("Workout Complete!");
+      navigate(-1);
+    }
+  }, [currentIndex, workouts.length, navigate]);
 
   useEffect(() => {
     if (paused || currentIndex >= workouts.length) return;
 
     if (timeLeft === 0) {
       if (currentIndex + 1 === workouts.length) {
-        // No rest after the last workout, just show the alert
         alert("Workout Complete!");
         navigate(-1);
         return;
@@ -25,7 +37,7 @@ const WorkoutPlayer = () => {
 
       if (phase === "workout") {
         setPhase("rest");
-        setTimeLeft(20); // Rest time duration
+        setTimeLeft(20); // Rest time
       } else {
         handleNext();
       }
@@ -37,18 +49,7 @@ const WorkoutPlayer = () => {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [timeLeft, paused, phase, currentIndex, workouts.length, navigate]);
-
-  const handleNext = () => {
-    if (currentIndex + 1 < workouts.length) {
-      setCurrentIndex((prev) => prev + 1);
-      setPhase("workout");
-      setTimeLeft(30); // Workout time duration
-    } else {
-      alert("Workout Complete!");
-      navigate(-1);
-    }
-  };
+  }, [timeLeft, paused, phase, currentIndex, workouts.length, navigate, handleNext]); // ✅ added handleNext
 
   const currentWorkout = workouts[currentIndex];
   const nextWorkout = workouts[currentIndex + 1];
@@ -62,7 +63,6 @@ const WorkoutPlayer = () => {
       </div>
 
       <div className="image-section">
-        {/* Show the next workout's video during rest phase */}
         <video
           src={phase === "rest" ? nextWorkout?.videoBase64 : currentWorkout?.videoBase64}
           autoPlay

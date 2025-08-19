@@ -5,18 +5,29 @@ import Footer from "./UI/Footer";
 import Header from "./component/Header";
 import AllRoutes from "./component/AllRoutes";
 import { AuthProvider, useAuth } from "./utils/AuthContext";
-import { BrowserRouter as Router } from "react-router-dom";
+// import { BrowserRouter as Router } from "react-router-dom";
 import AdminRouter from "./ADMIN/AdminRouter";
 
 function AppWrapper() {
   const { authUser } = useAuth();
-  const user = authUser || JSON.parse(localStorage.getItem("user"));
+
+  // ✅ Safe localStorage parse
+  const storedUser = localStorage.getItem("user");
+  let user = authUser;
+  if (!user && storedUser) {
+    try {
+      user = JSON.parse(storedUser);
+    } catch (error) {
+      console.error("Invalid user data in localStorage", error);
+    }
+  }
+
   const isAdmin = user && user.role === "admin";
 
   return (
     <>
       {isAdmin ? (
-        <AdminRouter/>
+        <AdminRouter />
       ) : (
         <>
           <Header />

@@ -6,6 +6,7 @@ import { useAuth } from "../utils/AuthContext";
 import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from "@mui/material";
 
 const nav__links = [
   {
@@ -34,17 +35,16 @@ const nav__links = [
   },
 ];
 
-
-
 const Header = () => {
-  const { authUser, logout } = useAuth();
+  const { authUser , logout } = useAuth();
   const [activeItem, setActiveItem] = useState(null);
-
-  // Fallback: get from localStorage if authUser not available
-  const storedUser = JSON.parse(localStorage.getItem("user"));
-  const user = authUser || storedUser;
-
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [anchorEl, setAnchorEl] = useState(null);
+  const [openLogoutDialog, setOpenLogoutDialog] = useState(false);
+
+  // Fallback: get from localStorage if authUser  not available
+  const storedUser  = JSON.parse(localStorage.getItem("user"));
+  const user = authUser  || storedUser ;
 
   const handleAvatarClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -53,8 +53,29 @@ const Header = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   const handleItemClick = (path) => {
     setActiveItem(path);
+    setIsMobileMenuOpen(false); // Close mobile menu on item click
+  };
+
+  const handleLogout = () => {
+    logout();
+    handleClose();
+  };
+
+  const handleLogoutDialogOpen = () => {
+    setOpenLogoutDialog(true);
+    handleClose();
+  };
+
+  const handleLogoutDialogClose = () => {
+    setOpenLogoutDialog(false);
+  };
+
+  const confirmLogout = () => {
+    handleLogout();
+    handleLogoutDialogClose();
   };
 
   const headerRef = useRef(null);
@@ -80,17 +101,19 @@ const Header = () => {
         <div className="nav__wrapper">
           <div className="logo">
             <div className="logo__img">
-              <img src={logo} alt="" />
+              <img src={logo} alt="Health & Fitness Logo" />
             </div>
             <h2>Health & Fitness</h2>
           </div>
 
           <div className="navigation">
-            <ul className="menu">
+            <ul className={`menu ${isMobileMenuOpen ? "open" : ""}`}>
               {nav__links.map((item) => (
                 <li className="nav__item" key={item.path || item.display}>
                   {item.path ? (
-                    <NavLink to={item.path}>{item.display}</NavLink>
+                    <NavLink to={item.path} onClick={() => handleItemClick(item.path)}>
+                      {item.display}
+                    </NavLink>
                   ) : (
                     item.display
                   )}
@@ -98,25 +121,32 @@ const Header = () => {
                   {/* Dropdown if children exist */}
                   {item.children && (
                     <ul className="dropdown">
-      {item.children &&
-        item.children.map((child) => (
-          <li
-            key={child.path}
-            className={activeItem === child.path ? 'active' : ''}
-            onClick={() => handleItemClick(child.path)}
-          >
-            <NavLink
-              to={child.path}
-              activeClassName="active" // React Router active class
-            >
-              {child.display}
-            </NavLink>
-          </li>
-        ))}
-    </ul>
+                      {item.children.map((child) => (
+                        <li
+                          key={child.path}
+                          className={activeItem === child.path ? 'active' : ''}
+                          onClick={() => handleItemClick(child.path)}
+                        >
+                          <NavLink
+                            to={child.path}
+                            activeClassName="active" // React Router active class
+                          >
+                            {child.display}
+                          </NavLink>
+                        </li>
+                      ))}
+                    </ul>
                   )}
                 </li>
               ))}
+              {/* Add Log In button to mobile menu */}
+              {!user && (
+                <li className="nav__item">
+                  <NavLink to="/login" onClick={() => setIsMobileMenuOpen(false)}>
+                    <button className="register__btn">Log In</button>
+                  </NavLink>
+                </li>
+              )}
             </ul>
           </div>
 
@@ -137,14 +167,7 @@ const Header = () => {
                   <MenuItem onClick={handleClose}>
                     <NavLink to="/userprofile">Profile</NavLink>
                   </MenuItem>
-
-
-                  <MenuItem
-                    onClick={() => {
-                      logout();
-                      handleClose();
-                    }}
-                  >
+                  <MenuItem onClick={handleLogoutDialogOpen}>
                     Logout
                   </MenuItem>
                 </Menu>
@@ -155,12 +178,33 @@ const Header = () => {
               </NavLink>
             )}
 
-            <span className="mobile__menu">
+            <span className="mobile__menu" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
               <i className="ri-menu-line"></i>
             </span>
           </div>
         </div>
       </div>
+
+      {/* Logout Confirmation Dialog */}
+      <Dialog
+        open={openLogoutDialog}
+        onClose={handleLogoutDialogClose}
+      >
+        <DialogTitle>Confirm Logout</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Are you sure you want to log out?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleLogoutDialogClose} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={confirmLogout} color="primary">
+            Logout
+          </Button>
+        </DialogActions>
+      </Dialog>
     </header>
   );
 };

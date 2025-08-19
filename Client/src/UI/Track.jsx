@@ -27,7 +27,7 @@ const Track = () => {
 
   useEffect(() => {
     fetchData();
-  }, []);
+  },);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });

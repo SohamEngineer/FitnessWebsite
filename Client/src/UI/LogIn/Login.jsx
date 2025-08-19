@@ -92,7 +92,7 @@ const Login = () => {
                   <input type="checkbox" />
                   Remember me
                 </label>
-               <NavLink to="/forgotpassword"> <a href="#">Forgot password?</a></NavLink>
+               <NavLink to="/forgotpassword"> Forgot password?</NavLink>
               </div>
               <button type="submit" className="login-btn">
                 LOGIN
@@ -102,7 +102,7 @@ const Login = () => {
               <span>
                 Don't have an account?{" "}
                 <NavLink to="/signup">
-                  <a>Register</a>
+                  Register
                 </NavLink>
               </span>
             </div>
