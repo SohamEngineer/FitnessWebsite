@@ -21,7 +21,6 @@ fetchUser.get("/all", async (req, res) => {
     }
   });
 
-
 // DELETE a Home Workout by ID
 fetchUser.delete("/homeworkout/:id", async (req, res) => {
     try {
