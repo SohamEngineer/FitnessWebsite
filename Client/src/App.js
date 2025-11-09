@@ -1,12 +1,11 @@
 import "./App.css";
 import { useEffect } from "react";
 import Aos from "aos";
-import Footer from "./UI/Footer";
-import Header from "./component/Header";
-import AllRoutes from "./component/AllRoutes";
+import Footer from "./layout/Footer";
+import Header from "./layout/Header";
+import AllRoutes from "./route/route";
 import { AuthProvider, useAuth } from "./utils/AuthContext";
-// import { BrowserRouter as Router } from "react-router-dom";
-import AdminRouter from "./ADMIN/AdminRouter";
+import AdminRouter from "./admin/adminRouter";
 
 function AppWrapper() {
   const { authUser } = useAuth();

@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-// import MealPlanningSamples from '../utils/mealPlanningData';
-// import '../styles/mealplaining.css';
+
 import "./mealplaining.css"
-import MealPlanningSamples from '../../AllData/maeaplainingdata';
-// import MealPlanningSamples from '../../utils/maeaplainingdata';
+import MealPlanningSamples from '../../data/maeaplainingdata';
 
 const MealPlanning = () => {
   const location = useLocation();

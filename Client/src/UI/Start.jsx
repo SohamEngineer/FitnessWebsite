@@ -7,7 +7,7 @@ const Start = () => {
     <div className="container">
         <div className="start__wrapper">
             <div className="start__img">
-                <img src={trainer} alt="err" data-aos-duration="1500" data-aos="fade-left" />
+                <img src={trainer} alt="err" />
             </div>
 
             <div className="start__content" data-aos-duration="1100" data-aos="fade-right">

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 // import MealPlanning from '';
-import "./Mainmeal.css";
+import "./mainmeal.css";
 import Caloricalculator from './caloricalculator';
-import MealPlanning from './MealPlaining';
+import MealPlanning from './mealPlaining';
 
 function MainMealSection() {
   const [activeFeature, setActiveFeature] = useState("mealPlanning");

@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { FaUser, FaEnvelope, FaLock, FaKey } from 'react-icons/fa';
-import './Signup.css';
+import './signup.css';
 import axios from "axios";
 import Swal from 'sweetalert2';
 

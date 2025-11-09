@@ -1,5 +1,5 @@
 import React from 'react'
-import "../styles/pricing.css"
+import "../../styles/pricing.css"
 
 const Pricing = () => {
   return <section id='membership'>

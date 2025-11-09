@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import '../styles/HomeWorkout.css';
+import '../../../styles/HomeWorkout.css';
 import WorkoutCard from './WorkoutCard';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const HomeWorkout = () => {
+const Gym = () => {
   const [selectedDay, setSelectedDay] = useState(1);
   const [filter, setFilter] = useState('Full Body');
   const [allWorkouts, setAllWorkouts] = useState([]);
-  const navigate = useNavigate();
-
-  // Get selected day from localStorage on component mount
+const navigate=useNavigate()
+  
   useEffect(() => {
     const savedDay = localStorage.getItem('selectedDay');
     if (savedDay) {
@@ -18,11 +17,11 @@ const HomeWorkout = () => {
     }
   }, []);
 
-  // Fetch workouts
+
   useEffect(() => {
     const fetchHomeWorkout = async () => {
       try {
-        const res = await axios.get("http://localhost:8000/api/homeworkout");
+        const res = await axios.get("http://localhost:8000/api/gymwork");
         setAllWorkouts(res.data);
       } catch (error) {
         console.error("Error fetching workouts:", error);
@@ -31,19 +30,18 @@ const HomeWorkout = () => {
     fetchHomeWorkout();
   }, []);
 
-  // Handle day selection and save to localStorage
+  // Filter workouts by selected day and type
+  const todayWorkout = allWorkouts.filter(
+    (w) => w.type === filter && w.day === `Day ${selectedDay}`
+  );
+
   const handleDaySelect = (day) => {
     setSelectedDay(day);
     localStorage.setItem('selectedDay', day);
   };
 
-  // Filter workouts for selected day and type
-  const todayWorkout = allWorkouts.filter(
-    (w) => w.type === filter && w.day === `Day ${selectedDay}`
-  );
-
   const handleWorkoutClick = (id) => {
-    navigate(`/homeworkout/${id}`);
+    navigate(`/gymworkout/${id}`);
   };
 
 
@@ -65,7 +63,7 @@ const HomeWorkout = () => {
       </div>
 
       <div className="content-area">
-        <h2>Home Workout</h2>
+        <h2>Gym Workout</h2>
 
         <select onChange={(e) => setFilter(e.target.value)} value={filter}>
           <option value="Full Body">Full Body</option>
@@ -78,24 +76,21 @@ const HomeWorkout = () => {
         <div className="workout-list">
           {todayWorkout.length > 0 ? (
             todayWorkout.map((item, index) => (
-              <WorkoutCard
-                key={index}
-                workout={item}
-                onClick={() => handleWorkoutClick(item._id)}
-              />
+              <WorkoutCard key={index} 
+              workout={item}
+              onClick={() => handleWorkoutClick(item._id)} />
             ))
           ) : (
             <p>No workouts found for this day and type.</p>
           )}
         </div>
+        
 
-        <button className="start-btn"
-          onClick={() =>
-            navigate("/start-workout", { state: { workouts: todayWorkout } })
-          }>Start</button>
+
+        <button className="start-btn">Start</button>
       </div>
     </div>
   );
 };
 
-export default HomeWorkout;
+export default Gym;

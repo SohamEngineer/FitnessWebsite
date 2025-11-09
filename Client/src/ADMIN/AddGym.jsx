@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./Addhome.css";
+import "./addhome.css";
 import Swal from "sweetalert2";
 
 const AddGym = () => {

@@ -103,7 +103,7 @@ const Header = () => {
             <div className="logo__img">
               <img src={logo} alt="Health & Fitness Logo" className=""/>
             </div>
-            <h2>Health & Fitness</h2>
+            <h2 className="text-red-600">Health & Fitness</h2>
           </div>
 
           <div className="navigation">

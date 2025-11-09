@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/WorkCard.css';
+import '../../../styles/WorkCard.css';
 
 const GymWorkoutCard = ({ workout }) => {
   console.log(workout)

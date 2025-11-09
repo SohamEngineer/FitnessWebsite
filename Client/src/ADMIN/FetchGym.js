@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import './FetchHome.css';
+import './fetchHome.css';
 
 const GymWorkoutTable = () => {
   const [gymphotoWorkouts, setGymWorkouts] = useState([]);

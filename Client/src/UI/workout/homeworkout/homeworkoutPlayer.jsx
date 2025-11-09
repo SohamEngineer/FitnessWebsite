@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import "../styles/WorkoutPlayer.css";
+import "../../../styles/WorkoutPlayer.css";
 import { FaPause, FaPlay } from "react-icons/fa6";
 
 const WorkoutPlayer = () => {

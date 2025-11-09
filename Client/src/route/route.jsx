@@ -1,26 +1,24 @@
 import React from 'react'
 import { Routes, Route} from "react-router-dom";
-
-import Pricing from '../UI/Pricing';
-
-import Home from '../UI/Home';
-import Login from '../UI/LogIn/Login';
-import Gym from '../UI/GymWorkout';
-import Signup from '../UI/Signup/signup';
-import ForgotPassword from '../UI/ForgotPassword/Forgot';
-import VerifyOTP from '../UI/ForgotPassword/Verify_otp';
-import ResetPassword from '../UI/ForgotPassword/resetPassword';
-import TrackLogin from '../UI/Tracklogin';
-import Track from '../UI/Track';
+import Home from '../UI/home';
+import Signup from '../UI/Auth/Signup/signup';
+import ForgotPassword from '../UI/Auth/passwordManage/forgotPassword/forgot';
+import VerifyOTP from '../UI/Auth/passwordManage/otp/verifyOtp';
+import ResetPassword from '../UI/Auth/passwordManage/reset/resetPassword';
+import TrackLogin from '../UI/tracklogin';
+import Track from '../UI/track';
 import { useAuth } from '../utils/AuthContext';
-import MealPlanning from '../UI/MealSection/MealPlaining';
-import MainMealSection from '../UI/MealSection/MainMealSection';
-import Caloricalculator from '../UI/MealSection/caloricalculator';
-import HomeWorkout from '../UI/WorkoutHome';
-import WorkoutDetails from '../UI/WorkOutDetails';
-import GymWorkoutDetails from '../UI/GymWorkDetails';
-import WorkoutPlayer from '../UI/WorkoutPlayer';
+import MealPlanning from '../UI/mealSection/mealPlaining';
+import MainMealSection from '../UI/mealSection/mainMealSection';
+import WorkoutDetails from '../UI/workout/homeworkout/homeworkoutDetails';
+import GymWorkoutDetails from '../UI/workout/gymworkout/gymworkDetails';
+import WorkoutPlayer from '../UI/workout/homeworkout/homeworkoutPlayer';
 import ProfilePage from '../UI/profile/profile';
+import HomeWorkout from '../UI/workout/homeworkout/homeworkout';
+import Gym from '../UI/workout/gymworkout/gymworkDetails';
+import Login from '../UI/Auth/LogIn/Login';
+import Pricing from '../UI/subscription/pricing';
+import Caloricalculator from '../UI/mealSection/caloricalculator';
 
 const AllRoutes = () => {
   

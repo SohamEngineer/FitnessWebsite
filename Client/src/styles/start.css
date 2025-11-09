@@ -6,13 +6,20 @@
     margin-top: -100px;
 }
 
-.start__img, .start__content {
+ .start__content {
     width: 50%; /* Default width for larger screens */
 }
-
 .start__img {
-    width: 100%; /* Ensure image takes full width */
+    width: 100%;
 }
+
+.start__img img {
+    width: 100%;
+    height: auto; /* This keeps the image proportion correct */
+    display: block; /* Removes random bottom whitespace */
+    object-fit: cover; /* Optional, makes it look clean if container resizing happens */
+}
+
 
 .start__content h2 {
     font-size: 2.5rem;
@@ -52,6 +59,7 @@
 
 @media (max-width: 480px) {
     .start__content h2 {
+        margin-top: 10px;
         font-size: 1.5rem; /* Further reduce title size */
     }
 

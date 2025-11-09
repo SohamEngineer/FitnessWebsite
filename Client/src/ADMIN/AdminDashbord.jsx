@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./Dashbord.css"; // We’ll create this next
-import HomeWorkoutTable from "./FetchHome";
-import GymWorkoutTable from "./FetchGym";
+import "./dashbord.css"; // We’ll create this next
+import HomeWorkoutTable from "./fetchHome";
+import GymWorkoutTable from "./fetchGym";
 
 const AdminDashboard = () => {
   const [users, setUsers] = useState([]);

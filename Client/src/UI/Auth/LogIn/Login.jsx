@@ -4,7 +4,8 @@ import "./login.css";
 import { NavLink, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import axios from "axios";
-import { useAuth } from "../../utils/AuthContext";
+import { useAuth } from "../../../utils/AuthContext";
+// import { useAuth } from "../../utils/AuthContext";
 
 const Login = () => {
   const [loginuser, setLoginUser] = useState({ email: "", password: "" });
@@ -88,10 +89,7 @@ const Login = () => {
                 
               />
               <div className="options">
-                <label>
-                  <input type="checkbox" />
-                  Remember me
-                </label>
+                
                <NavLink to="/forgotpassword"> Forgot password?</NavLink>
               </div>
               <button type="submit" className="login-btn">

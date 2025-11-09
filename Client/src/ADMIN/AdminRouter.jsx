@@ -1,9 +1,9 @@
 import React from 'react'
 import { Route, Routes, Navigate } from 'react-router-dom'
-import AdminPanal from './AdminPanal'
-import AddHome from './AddHome'
-import AddGym from './AddGym'
-import AdminDashbord from './AdminDashbord'
+import AdminPanal from './adminPanal'
+import AddHome from './addHome'
+import AddGym from './addGym'
+import AdminDashbord from './adminDashbord'
 
 
 function AdminRouter() {

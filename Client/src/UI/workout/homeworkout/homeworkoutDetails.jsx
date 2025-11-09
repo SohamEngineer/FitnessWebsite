@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import "../styles/WorkoutDetails.css";
+import "../../../styles/WorkoutDetails.css";
 import { FaCircleLeft } from "react-icons/fa6";
 
-const GymWorkoutDetails = () => {
+const WorkoutDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [workout, setWorkout] = useState(null);
@@ -12,7 +12,7 @@ const GymWorkoutDetails = () => {
   useEffect(() => {
     const fetchWorkout = async () => {
       try {
-        const res = await axios.get(`http://localhost:8000/api/gymwork/gymworkout/${id}`);
+        const res = await axios.get(`http://localhost:8000/api/homeworkout/homeworkout/${id}`);
         setWorkout(res.data);
       } catch (err) {
         console.error("Error fetching workout:", err);
@@ -26,10 +26,12 @@ const GymWorkoutDetails = () => {
 
   return (
     <div className="workout-detail-container">
-      <div className="back-button" onClick={() => navigate(-1)}><FaCircleLeft />
-</div>
+    <h1 className="text-3xl font-bold text-red-600">Tailwind Working</h1>
 
-      <h2 className="workout-title">{workout.title}</h2>
+<div className="header-row">
+  <div className="back-button" onClick={() => navigate(-1)}><FaCircleLeft /></div>
+  <h2 className="workout-title">{workout.title}</h2>
+</div>
 
       <div className="workout-image">
         {workout.videoBase64 ? (
@@ -61,4 +63,4 @@ const GymWorkoutDetails = () => {
   );
 };
 
-export default GymWorkoutDetails;
+export default WorkoutDetails;
